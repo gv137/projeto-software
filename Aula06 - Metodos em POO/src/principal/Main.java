@@ -39,6 +39,8 @@ public class Main {
 		int quantidade = sc.nextInt();
 		magico.emprestaLivro(quantidade);
 		
+		System.out.println("O valor total de compra foi de" + magico.valorCompra(quantidade));
+		
 		System.out.println("Informe a quantidade de livros devolvidos: ");
 		quantidade = sc.nextInt();
 		magico.devolveLivro(quantidade);
@@ -48,7 +50,7 @@ public class Main {
 		
 		System.out.println(magico);
 		
-		System.out.println("\nO valor total da compra foi de " + magico.valorTotalLivro() + " reais");
+		System.out.println("\nO valor total dos livros é de " + magico.valorTotalLivro() + " reais");
 		
 		System.out.println("\nResta um total de " + magico.quantidade +" livros no estoque");
 		

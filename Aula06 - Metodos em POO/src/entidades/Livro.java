@@ -39,4 +39,10 @@ public class Livro {
 		this.quantidade += quantidade;
 	}
 
+	public double valorCompra(int quantidade) {
+		
+		double valorGeral = valor * quantidade;
+		return valorGeral;
+		
+	}
 }
