@@ -8,32 +8,33 @@ public class ContaBancaria {
 	private double saldo;
 	
 	
-	//Métodos
-	public ContaBancaria (String titular, double saldo) {
+	public ContaBancaria(String titular, double saldo) {
 		this.titular = titular;
 		this.saldo = saldo;
 	}
 
-	//Métodos Setters
-
-	public String setTitular(String titular) {
-		return this.titular = titular;
-	}
+	//Métodos Setters e Getters
 	
 	public String getTitular() {
 		return titular;
 	}
-	
+
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
+
 	public double getSaldo() {
 		return saldo;
 	}
-	
 	
 	@Override
 	public String toString() {
 		return "titular = " + titular + 
 			   " \nsaldo = R$" + saldo;
 	}
+
+
+
 	
 	
 	
