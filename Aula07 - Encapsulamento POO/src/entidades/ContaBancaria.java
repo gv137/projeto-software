@@ -26,6 +26,28 @@ public class ContaBancaria {
 	public double getSaldo() {
 		return saldo;
 	}
+
+	//Métodos altera saldo
+	
+	public void depositar(double valor) {
+		if (valor > 0) {
+			this.saldo += valor;
+		} 
+		else {
+			System.out.println("Valor inválido");
+		}
+	}
+	
+	public void sacar(double valor) {
+		if (valor > 0 && saldo >= valor) {
+			saldo -= valor;
+		} else {
+			System.out.println("Valor inválido");
+		}
+	}
+	
+	
+	
 	
 	@Override
 	public String toString() {
@@ -35,7 +57,7 @@ public class ContaBancaria {
 
 
 
-	
+
 	
 	
 
