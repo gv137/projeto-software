@@ -26,6 +26,7 @@ public class Vetores {
 		 */
 		 
 		 /*Ler valores do vetor - for*/
+		 
 		 for (double nota : notasAluno) {
 			 System.out.println(nota);
 		 }
