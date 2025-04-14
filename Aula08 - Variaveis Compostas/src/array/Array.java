@@ -27,6 +27,9 @@ public class Array {
 		/*Remover um item da lista pelo valor*/
 		listaNomes.remove("Gustavo");
 		
+		/*Remover um item da lista pela posição*/
+		listaNomes.remove(3);
+		
 		
 		/*Percorrer a Array e os Vetores*/
 		for(String nome : listaNomes) {
