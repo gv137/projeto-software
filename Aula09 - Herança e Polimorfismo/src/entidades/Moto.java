@@ -1,6 +1,8 @@
 package entidades;
 
-public class Moto extends Veiculos {
+import servico.Alugar;
+
+public class Moto extends Veiculos implements Alugar {
 
 	private int cilindradas;
 	
@@ -13,6 +15,22 @@ public class Moto extends Veiculos {
 	public String toString() {
 		return super.toString() +
 				"\n Cilindradas = " + cilindradas;
+	}
+
+	@Override
+	public double calcAluguel(int dias) {
+		
+		double valorTotal = 0;
+		
+		if (cilindradas > 500) {
+			valorTotal = getValorDiaria() * dias * 2;
+		} else if(cilindradas <= 250) {
+			valorTotal = getValorDiaria() * dias;
+		} else if (cilindradas > 250 && cilindradas <= 500) {
+			valorTotal = getValorDiaria() * dias * 1.5;
+		}
+		
+		return valorTotal;
 	}
 	
 	
