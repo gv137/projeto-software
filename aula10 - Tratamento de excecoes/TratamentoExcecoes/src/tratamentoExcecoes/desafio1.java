@@ -24,6 +24,7 @@ public class desafio1 {
 				continuar = false;
 			}catch(ArithmeticException  | InputMismatchException e) {
 				System.out.println("Erro" +e.getMessage()+ " na entrada, insira os valores novamente - ");
+				sc.nextLine();
 			}	
 		}
 		
