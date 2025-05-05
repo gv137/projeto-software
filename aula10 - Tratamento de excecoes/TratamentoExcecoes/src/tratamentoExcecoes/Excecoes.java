@@ -35,8 +35,11 @@ public class Excecoes {
 			double divisao = 10 / 0;
 			System.out.println(divisao);
 		}catch(ArithmeticException e) {
-			System.out.println(e.getMessage());
+			System.out.println();
 		}
+		
+	
+		
 		
 			
 //		System.out.println("FIM !_!");
