@@ -2,34 +2,29 @@ package application;
 	
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			
-			
 			//Titulo Tela
-			primaryStage.setTitle("Home");
+			primaryStage.setTitle("TELA HOME");
 			//Definir se a tela pode crescer
 			primaryStage.resizableProperty().setValue(Boolean.FALSE);
 			
-			
-			//Carregar tela
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TelaHome.fxml"));
+			//Carregar a tela
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TelaHome.fxml"));
 			Parent arquivoFxml = loader.load();
 			
-			//carregar a cena
+			//Carregar a cena
 			Scene home = new Scene(arquivoFxml);
 			primaryStage.setScene(home);
 			
 			primaryStage.show();
-			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
