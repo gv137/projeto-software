@@ -1,9 +1,11 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.CadastroUsuario;
@@ -29,6 +31,16 @@ public class CadastroController {
     	String nome = this.txtLogin.getText();
     	String senha = this.txtSenha.getText();
     	
+    	//Validação dos campos
+    	
+    	if(login.isEmpty()|| nome.isEmpty() || senha.isEmpty()) {
+    		Alert alerta = new Alert (Alert.AlertType.ERROR);
+    		alerta.setTitle("Errp Cadastro");
+    		alerta.setHeaderText("Campos inválidos");
+    		alerta.setContentText("Verifique se todos os campos foram preenchidos");
+    		alerta.showAndWait();
+    	}else {
+    	
     	//Instanciar as calsses Usuaruio e CadastrarUsuario 
     	Usuario novoUsuario = new Usuario(id, nome, login, senha);
     	CadastroUsuario cadastrarUsuario = new CadastroUsuario();
@@ -36,11 +48,15 @@ public class CadastroController {
     	//Chamar o método que registra o usuario
     	cadastrarUsuario.cadastrarUsuario(novoUsuario);
     	
+    	}
+    	
     }
 
     @FXML
-    void onClickVoltar(ActionEvent event) {
+    void onClickVoltar(ActionEvent event) throws IOException {
 
+    	AlterarTelaController.mudarTela(event, "/view/TelaHome.fxml", "Tela Home");
+    	
     }
 
 }

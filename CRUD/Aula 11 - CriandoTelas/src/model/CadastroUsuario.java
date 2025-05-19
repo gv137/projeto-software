@@ -13,6 +13,10 @@ public class CadastroUsuario {
 		//comando para inserir dados no DB
 		String sql = "INSERT INTO usuarios (id, login, nome, senha) VALUES (?, ?, ?, ?)";
 		
+		try {
+			
+		
+		
 		//preparando a consulta SQL 
 		Connection conn = ConexaoDB.conectar();
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -36,6 +40,16 @@ public class CadastroUsuario {
 		alerta.setHeaderText("Cadastrado com sucesso");
 		alerta.setContentText("O novo usuário foi cadastrado com sucesso");
 		alerta.showAndWait();
+		
+		} catch (SQLException e) {
+			//criar uma janela caso o login ja exista
+			Alert alerta = new Alert (Alert.AlertType.ERROR);
+			alerta.setTitle("Erro Cadastro");
+			alerta.setHeaderText("Login já existente");
+			alerta.setContentText("Este login ja está sendo utilizado");
+			alerta.showAndWait();
+		}
+		
 	}
 	
 }
