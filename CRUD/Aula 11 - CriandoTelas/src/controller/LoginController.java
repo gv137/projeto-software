@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.LoginUsuario;
@@ -27,7 +28,11 @@ public class LoginController {
     	Usuario usuario = loginUsuario.verificarLogin(login, senha);
     	
     	if (usuario == null) {
-    		System.out.println("Usuário ou senha incorretos");
+			Alert alerta = new Alert (Alert.AlertType.ERROR);
+			alerta.setTitle("Erro Login");
+			alerta.setHeaderText("Login ou senha incorretad");
+			alerta.setContentText("Verifique as credenciais novamente");
+			alerta.showAndWait();
 		} else {
 			System.out.println("Acesso liberado");
 		}
