@@ -1,11 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import model.LoginUsuario;
+import model.Usuario;
 
 public class LoginController {
 
@@ -16,9 +19,18 @@ public class LoginController {
     private PasswordField txtSenha;
 
     @FXML
-    void onClickEntrar(ActionEvent event) {
+    void onClickEntrar(ActionEvent event) throws SQLException {
+    	String login = this.txtLogin.getText();
+    	String senha = this.txtSenha.getText();
     	
+    	LoginUsuario loginUsuario = new LoginUsuario();
+    	Usuario usuario = loginUsuario.verificarLogin(login, senha);
     	
+    	if (usuario == null) {
+    		System.out.println("Usuário ou senha incorretos");
+		} else {
+			System.out.println("Acesso liberado");
+		}
     }
 
     @FXML
