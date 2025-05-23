@@ -15,9 +15,6 @@ public class ConexaoDB {
 	
 	//Método estático que retorna a conexão com o banco de dados
 	public static Connection conectar() throws SQLException {
-	
 		return DriverManager.getConnection(URL, User, PASSWORD);
-	
 	}
-
 }

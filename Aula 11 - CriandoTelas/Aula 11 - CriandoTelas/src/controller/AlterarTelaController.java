@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Usuario;
 
 public class AlterarTelaController {
 
@@ -21,6 +22,34 @@ public class AlterarTelaController {
 		// Identificar a mudança de janela
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
+		//Definir uma nova cena para a tela
+		Scene scene = new Scene(root);
+		
+		//Definir um titulo para a janela
+		stage.setTitle(titulo);
+		
+		//Atualizo a nova cena
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+	
+	public static void mudarTelaUsuario(ActionEvent event, String TelaFXML, String titulo, Usuario usuario) throws IOException {
+
+		// Informa o caminho do arquivo FXML
+		FXMLLoader loader = new FXMLLoader(AlterarTelaController.class.getResource(TelaFXML));
+		
+		// Carregar o arquivo FXML
+			Parent root = loader.load();
+		
+		//Instanciar a classe Usuario Controller
+		UsuarioController controller = loader.getController();
+		controller.recebeUsuario(usuario);
+		
+		
+
+		// Identificar a mudança de janela
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
 		//Definir uma nova cena para a tela
 		Scene scene = new Scene(root);

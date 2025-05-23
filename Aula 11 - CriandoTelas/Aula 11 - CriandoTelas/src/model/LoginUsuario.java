@@ -6,43 +6,47 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginUsuario {
-	// Criar um método que retornará o objeto Usuário ou null
-
+	
+	//Criar um método que retornará o objeto Usuário ou null
+	
 	public Usuario verificarLogin(String login, String senha) throws SQLException {
-
-		// Consulta SQL para buscar o usuário
-		String SQL = "SELECT * FROM  usuarios WHERE login = ?";
-
-		try (Connection conn = ConexaoDB.conectar(); PreparedStatement stmt = conn.prepareStatement(SQL)) {
-
+		
+		//SQL para buscar o usuário 
+		String sql = "SELECT * FROM usuarios WHERE login = ?";
+		
+		try (Connection conn = ConexaoDB.conectar();
+			PreparedStatement stmt = conn.prepareStatement(sql)){
+			
 			stmt.setString(1, login);
 			ResultSet rs = stmt.executeQuery();
-
-			// Validar se a consulta retornou null
+			
+			//Validar se a consulta retornou False
 			if (!rs.next()) {
 				return null;
 			}
-
-			// recupera a senha do usuário no BD
+			
+			//Recupera a senha do usuario no banco de dados
 			String senhaDB = rs.getString("senha");
-
-			// Comparar a senha digitada com a senha salva no banco de dados
+			
+			//Comparar a senha digitada com a senha salva no Banco de dados
 			if (senha.equals(senhaDB)) {
-
-				// instancia o objeto da classe usuario, usando as info retornadas do DB
+				//Instancia o objeto da classe usuario, usando as informações retornadas do DB.
 				Usuario usuario = new Usuario(rs.getInt("id"), rs.getString("login"), rs.getString("nome"),
 						rs.getString("senha"));
 				return usuario;
 			} else {
 				return null;
 			}
-
 		}
-
+		
 		catch (SQLException e) {
 			return null;
 		}
-
-
+		
+		
+		
 	}
+	
 }
+
+

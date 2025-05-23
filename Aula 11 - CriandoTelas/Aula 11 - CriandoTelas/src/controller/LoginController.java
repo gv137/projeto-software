@@ -20,7 +20,7 @@ public class LoginController {
     private PasswordField txtSenha;
 
     @FXML
-    void onClickEntrar(ActionEvent event) throws SQLException {
+    void onClickEntrar(ActionEvent event) throws SQLException, IOException {
     	String login = this.txtLogin.getText();
     	String senha = this.txtSenha.getText();
     	
@@ -28,14 +28,17 @@ public class LoginController {
     	Usuario usuario = loginUsuario.verificarLogin(login, senha);
     	
     	if (usuario == null) {
-			Alert alerta = new Alert (Alert.AlertType.ERROR);
+    		Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setTitle("Erro Login");
-			alerta.setHeaderText("Login ou senha incorretad");
-			alerta.setContentText("Verifique as credenciais novamente");
+			alerta.setHeaderText("Login ou senha incorretas");
+			alerta.setContentText("Verifique as credenciais e tente novamente");
 			alerta.showAndWait();
-		} else {
-			System.out.println("Acesso liberado");
-		}
+    	}else {
+	
+    		AlterarTelaController.mudarTelaUsuario(event, "/view/TelaUsuario.fxml", "Tela Usuario", usuario);
+    		
+    	}
+    
     }
 
     @FXML
